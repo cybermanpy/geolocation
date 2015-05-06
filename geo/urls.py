@@ -8,4 +8,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'location.views.index', name='index'),
+    url(r'^sent/$', 'location.views.sent', name='sent'),
 )
