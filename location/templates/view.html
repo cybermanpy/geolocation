@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<article class="torneo right-center">
+
+    <table class="table">
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>COORDENADAS</th>
+
+            <th>PHONE</th>
+
+            <th>COUNT</th>
+
+        </tr>
+
+        {% for item in pos %}
+
+        <tr style="background:{% cycle '#DCDCF0' '#FFFFF0' %} ">
+
+            <td>{{ item.id }}</td>
+
+            <td>{{ item.latitude }}, {{ item.longitude }} </td>
+
+            <td>{{ item.phone }}</td>
+
+            <td>{{ item.count }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</article>
+
+{% endblock %}

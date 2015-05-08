@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load location_extras %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<article class="torneo right-text">
+
+    <form id='form' method='post' action=''>{% csrf_token %}
+
+        <label for="latitude">Latitude:</label>
+
+        <input id="lat" type="text" class="input" disabled> {{ form.latitude|addcss:'input' }} <div class="error"> {{ form.latitude.errors}} </div>
+
+        <label for="longitude">Longitude:</label>
+
+        <input id="lon" type="text" class="input" disabled> {{ form.longitude|addcss:'input' }} <div class="error"> {{ form.longitude.errors}} </div>
+
+        <label for="phone">Phone:</label>
+
+        {{ form.phone|addcss:'input' }} <div class="error"> {{ form.phone.errors}} </div>
+
+        {{ form.count|addcss:'input' }} <div class="error"> {{ form.count.errors}} </div>
+
+        <input type="submit" value="Enviar">
+
+    </form>
+
+</article>
+
+{% endblock %}

@@ -2,49 +2,49 @@
 
 
 
-	if(navigator.geolocation){
+    if(navigator.geolocation){
 
-		navigator.geolocation.getCurrentPosition(getCoords, errorFound);
+        navigator.geolocation.getCurrentPosition(getCoords, errorFound);
 
-	} else{
+    } else{
 
-		alert("Actualiza tu navegador");
+        alert("Actualiza tu navegador");
 
-	}
+    }
 
 
 
-	function errorFound(error){
+    function errorFound(error){
 
-		alert("Ocurrio un error: " + error.code);
+        alert("Ocurrio un error: " + error.code);
 
-		// 0: Error desconocido
+        // 0: Error desconocido
 
-		// 1: Permiso denegado
+        // 1: Permiso denegado
 
-		// 2: Posicion no esta disponible
+        // 2: Posicion no esta disponible
 
-		// 3: Timeout
+        // 3: Timeout
 
-	}
+    }
 
-	function getCoords(position){
+    function getCoords(position){
 
-		var lat = position.coords.latitude;
+        var lat = position.coords.latitude;
 
-		var lon = position.coords.longitude;
+        var lon = position.coords.longitude;
 
-		console.log("tu posicion es: " + lat + "," + lon);
+        console.log("tu posicion es: " + lat + "," + lon);
 
-		var x = document.getElementById("latitude");
+        var x = document.getElementById("id_latitude").value=lat;
 
-		var y = document.getElementById("longitude");
+        var y = document.getElementById("id_longitude").value=lon;
 
-		x.value = lat;
+        var xlat = document.getElementById('lat').value = lat;
 
-		y.value = lon
+        var ylon = document.getElementById('lon').value = lon;
 
-	}
+    }
 
 
 
