@@ -22,6 +22,8 @@ def sent(request):
 
     title = ".::GEOLOCATION::."
 
+    ipClient = request.META['HTTP_X_FORWARDED_FOR']
+
     if request.method=='POST':
 
         form = PositionForm(request.POST)
@@ -34,7 +36,9 @@ def sent(request):
 
     else:
 
-        form = PositionForm()
+        default_data = {'latitude': '1', 'longitude':'2', 'phone': ipClient, 'count': '0' }
+
+        form = PositionForm(default_data)
 
     return render_to_response('form.html', {'form':form, 'title':title}, context_instance=RequestContext(request))
 

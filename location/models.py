@@ -8,7 +8,7 @@ class Position(models.Model):
 
     longitude = models.CharField(blank=False, max_length=500)
 
-    phone = models.IntegerField(blank=False)
+    phone = models.CharField(blank=False, max_length=20)
 
     count = models.IntegerField(blank=False)
 
