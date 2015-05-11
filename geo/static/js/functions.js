@@ -2,9 +2,13 @@
 
 
 
-    if(navigator.geolocation){
+   if(navigator.geolocation){
 
-        navigator.geolocation.getCurrentPosition(getCoords, errorFound);
+        navigator.geolocation.watchPosition(getCoords, errorFound);
+
+        //navigator.geolocation.clearWatch(id);
+
+        //navigator.geolocation.getCurrentPosition(getCoords, errorFound);
 
     } else{
 
@@ -12,11 +16,37 @@
 
     }
 
-
-
     function errorFound(error){
 
-        alert("Ocurrio un error: " + error.code);
+        // alert("Ocurrio un error: " + error.code);
+
+        switch(error.code){
+
+            case 0:
+
+                alert("Error deconocido");
+
+                break;
+
+            case 1:
+
+                alert("Permiso denegado");
+
+                break;
+
+            case 2:
+
+                alert("Posicion no esta disponible");
+
+                break;
+
+            case 3:
+
+                alert("Timeout");
+
+                break;
+
+        }
 
         // 0: Error desconocido
 
@@ -49,3 +79,5 @@
 
 
 })();
+
+
