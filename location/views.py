@@ -1,8 +1,8 @@
-import json
+import json, pafy
 from django.template.context import RequestContext
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import PositionForm
+from .forms import PositionForm, VideoDown
 from .models import Position
 
 def index(request):
@@ -37,8 +37,34 @@ def viewLocationJSON(request, id_location):
         'phone': pos.phone,
         'count': pos.count,
     }
-
     json_data = json.dumps(data)
+    return HttpResponse(json_data, content_type='application/json')
     # json.loads(string_json)
 
+def downloadVideo(request):
+    link = "https://www.youtube.com/watch?v=qcguxHc4hiU"
+    video = pafy.new(link)
+    data =  {
+        'title': video.title,
+        'author': video.author,
+        'videoId': video.videoid,
+        'duration': video.duration,
+        'keywords': video.keywords,
+    }
+    json_data = json.dumps(data)
     return HttpResponse(json_data, content_type='application/json')
+    # fileVideo = video.getbest()
+    # fileVideo.download()
+
+def formVideo(request):
+    if request.method == 'POST':
+        link = request.POST['link']
+        path = request.POST['path']
+        # video = pafy.new(link)
+        # filepath = path
+        # fileVideo = video.getbest()
+        # fileVideo.download()
+        return render_to_response('index.html', {'link': link, 'path': path}, context_instance=RequestContext(request))
+    else:
+        form = VideoDown()
+    return render_to_response('formvideo.html', {'form': form}, context_instance=RequestContext(request))

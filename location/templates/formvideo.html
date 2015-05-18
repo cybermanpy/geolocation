@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load location_extras %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<article class="torneo right-text">
+    <form id='form' method='post' action=''>{% csrf_token %}
+        <label for="video">Video:</label>
+        {{ form.link|addcss:'input' }} <div class="error"> {{ form.video.errors}} </div>
+        <label for="path">Path:</label>
+        {{ form.path|addcss:'input' }} <div class="error"> {{ form.path.errors}} </div>
+        <input type="submit" value="Enviar">
+    </form>
+</article>
+
+{% endblock %}
