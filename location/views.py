@@ -42,7 +42,7 @@ def viewLocationJSON(request, id_location):
     # json.loads(string_json)
 
 def downloadVideo(request):
-    if request.method == 'POST'
+    if request.method == 'POST':
         link = request.POST['link']
         video = pafy.new(link)
         data =  {
