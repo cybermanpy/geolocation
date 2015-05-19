@@ -42,19 +42,21 @@ def viewLocationJSON(request, id_location):
     # json.loads(string_json)
 
 def downloadVideo(request):
-    link = "https://www.youtube.com/watch?v=qcguxHc4hiU"
-    video = pafy.new(link)
-    data =  {
-        'title': video.title,
-        'author': video.author,
-        'videoId': video.videoid,
-        'duration': video.duration,
-        'keywords': video.keywords,
-    }
-    json_data = json.dumps(data)
-    return HttpResponse(json_data, content_type='application/json')
-    # fileVideo = video.getbest()
-    # fileVideo.download()
+    if request.method == 'POST'
+        link = request.POST['link']
+        video = pafy.new(link)
+        data =  {
+            'title': video.title,
+            'author': video.author,
+            'videoId': video.videoid,
+            'duration': video.duration,
+            'keywords': video.keywords,
+        }
+        json_data = json.dumps(data)
+        return HttpResponse(json_data, content_type='application/json')
+    else:
+        form = VideoDown()
+    return render_to_response('formvideo.html', {'form': form}, context_instance=RequestContext(request))
 
 def formVideo(request):
     if request.method == 'POST':
