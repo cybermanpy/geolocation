@@ -43,13 +43,15 @@ def viewLocationJSON(request, id_location):
 def viewAllJSON(request):
     title = ".::GEOLOCATION::."
     pos = Position.objects.all()
+    data = []
     for item in pos:
-        data = {
-            'latitude': item.latitude,
-            'longitude': item.longitude,
-            'phone': item.phone,
-            'count': item.count,
-        }
+        item_dic = {}
+        item_dic['latitude'] = item.latitude
+        item_dic['longitude'] = item.longitude
+        item_dic['phone'] = item.phone
+        item_dic['id'] = item.id
+        item_dic['count'] = item.count
+        data.append(item_dic)
     json_data = json.dumps(data)
     return HttpResponse(json_data, content_type='application/json')
 
