@@ -29,7 +29,19 @@ def viewLocation(request):
 
 def viewLocationJSON(request, id_location):
     title = ".::GEOLOCATION::."
-    # pos = Position.objects.get(id=id_location)
+    pos = Position.objects.get(id=id_location)    
+    data = {
+        'latitude': pos.latitude,
+        'longitude': pos.longitude,
+        'phone': pos.phone,
+        'count': pos.count,
+    }
+    json_data = json.dumps(data)
+    return HttpResponse(json_data, content_type='application/json')
+    # json.loads(string_json)
+
+def viewAllJSON(request):
+    title = ".::GEOLOCATION::."
     pos = Position.objects.all()
     for item in pos:
         data = {
@@ -40,7 +52,6 @@ def viewLocationJSON(request, id_location):
         }
     json_data = json.dumps(data)
     return HttpResponse(json_data, content_type='application/json')
-    # json.loads(string_json)
 
 def downloadVideo(request):
     if request.method == 'POST':
