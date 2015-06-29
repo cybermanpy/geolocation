@@ -1,0 +1,156 @@
+/*! 
+
+Theme Name: American Animal Food
+Theme URI: http://www.softnando.com
+Author: @_cyberman
+Description: Tema para American Animal Food
+Version: 1.0
+
+*/
+
+@import "normalize.styl"
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,700)
+
+headerColor = #F6F5F3
+footerColor = #1c57a4
+menuColor = #1C57A4
+textColorMenu = white
+menuBorder = #05456D
+
+body
+    font-family 'Roboto', sans-serif
+
+a
+    text-decoration none
+ul
+    list-style none
+.centerText
+    text-align center
+    
+.header
+    background headerColor
+    height 17vh
+    position relative
+    width 100vw
+.footer
+    background footerColor
+    bottom 0
+    position fixed
+    height 15vh
+    width 100vw
+    
+@media screen and (min-width:1000px)
+
+    body
+        font-family 'Roboto', sans-serif
+    
+/* Contenido del header y menu */
+    .header
+        background headerColor
+        height 150px
+        margin 0 auto
+        padding 0
+        width 100%
+        .header-content
+            height 150px
+            margin 0 auto
+            position relative
+            width 62.5em
+            .sidebar
+                position absolute
+                top 20px
+                right 0
+                li
+                    list-style none
+            .img-header
+                margin 0
+                left 0
+                top 20px
+                position absolute
+                width 100%
+                img
+                    width 17%
+            .nav
+               background menuColor
+               border-bottom 5px solid menuBorder
+               bottom 0
+               padding 0
+               position absolute
+               right 0
+               .nav__list //ul
+                   list-style none
+                   padding 0
+                   .menu-item //li
+                       display inline-block
+                       position relative
+                       list-style none
+                       &:hover ul
+                           display block
+                       .sub-menu
+                           padding 0
+                           display none
+                           left 10px
+                           position absolute
+                           text-align left
+                           .menu-item
+                               background menuColor
+                               width 150px
+                               padding-top 8px
+                               padding-bottom 8px
+                               margin 0
+                               position relative
+                               top 20px
+                               &:hover
+                                   background menuBorder
+                       a
+                           color textColorMenu
+                           padding 0.6em 1em
+                           text-decoration none
+            
+    
+/* Contenido */ 
+
+    .content
+        margin 0 auto
+        width 100%
+        .slider
+            margin 0 auto
+            width 90%
+            img
+                width 100%
+                height auto
+    
+    #container
+        margin 0 auto
+        height auto
+        // background green
+        #content
+            // background red
+            margin 0 auto
+            width 62.5em
+            height auto
+            .products
+                // background yellow
+                display flex
+                flex-wrap wrap
+                justify-content center
+                margin 0 auto
+                width 95%
+                height auto
+                li
+                    list-style none
+                    padding .6em
+                
+    /* Footer */
+        
+    .footer
+        background footerColor
+        bottom 0
+        margin 0
+        padding 0
+        position absolute
+        width 100%
+        .footer-content
+            margin 0 auto
+            text-align center
+            width 62.5em
